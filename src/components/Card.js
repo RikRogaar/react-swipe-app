@@ -10,7 +10,7 @@ export function CustomCard({ updateLiked }) {
     return Math.floor(Math.random() * 1084);
   };
 
-  const fetchData = () => {
+  const fetchImgData = () => {
     let num = getRandomNumber();
     fetch(`https://picsum.photos/seed/${num}/1080`)
       .then((response) => response.url)
@@ -23,7 +23,7 @@ export function CustomCard({ updateLiked }) {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchImgData();
   }, []);
 
   const handleLike = () => {
@@ -31,7 +31,7 @@ export function CustomCard({ updateLiked }) {
     liked.push(data);
     localStorage.setItem('liked', JSON.stringify(liked));
     updateLiked();
-    fetchData();
+    fetchImgData();
   }
 
   if (data.length !== 0) {
@@ -70,7 +70,7 @@ export function CustomCard({ updateLiked }) {
                   </Text>
                 </Button>
 
-                <Button flat auto rounded color="secondary" onPress={fetchData}>
+                <Button flat auto rounded color="secondary" onPress={fetchImgData}>
                   <Text
                     css={{ color: "inherit" }}
                     size={12}
