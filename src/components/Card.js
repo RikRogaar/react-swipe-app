@@ -6,12 +6,8 @@ import { useEffect, useState } from "react";
 export function CustomCard({ updateLiked }) {
   const [data, setData] = useState([]);
 
-  const getRandomNumber = () => {
-    return Math.floor(Math.random() * 1084);
-  };
-
   const fetchImgData = () => {
-    let num = getRandomNumber();
+    let num = Math.floor(Math.random() * 1084);
     fetch(`https://picsum.photos/seed/${num}/1080`)
       .then((response) => response.url)
       .then((data) => {
